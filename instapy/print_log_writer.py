@@ -47,7 +47,7 @@ def log_followed_pool(login, followed, logger, logfolder, logtime, user_id):
     a seperate file"""
     try:
         with open(
-            "{0}{1}_followedPool.csv".format(logfolder, login), "a+"
+                "{0}{1}_followedPool.csv".format(logfolder, login), "a+"
         ) as followPool:
             with interruption_handler():
                 followPool.write("{} ~ {} ~ {},\n".format(logtime, followed, user_id))
@@ -64,7 +64,7 @@ def log_uncertain_unfollowed_pool(login, person, logger, logfolder, logtime, use
     a seperate file"""
     try:
         with open(
-            "{0}{1}_uncertain_unfollowedPool.csv".format(logfolder, login), "a+"
+                "{0}{1}_uncertain_unfollowedPool.csv".format(logfolder, login), "a+"
         ) as followPool:
             with interruption_handler():
                 followPool.write("{} ~ {} ~ {},\n".format(logtime, person, user_id))
@@ -77,7 +77,7 @@ def log_record_all_unfollowed(login, unfollowed, logger, logfolder):
     a seperate file"""
     try:
         with open(
-            "{0}{1}_record_all_unfollowed.csv".format(logfolder, login), "a+"
+                "{0}{1}_record_all_unfollowed.csv".format(logfolder, login), "a+"
         ) as followPool:
             with interruption_handler():
                 followPool.write("{},\n".format(unfollowed))
@@ -89,7 +89,7 @@ def log_record_all_followed(login, followed, logger, logfolder, logtime, user_id
     """logs all followed ever to a pool that will never be erase"""
     try:
         with open(
-            "{0}{1}_record_all_followed.csv".format(logfolder, login), "a+"
+                "{0}{1}_record_all_followed.csv".format(logfolder, login), "a+"
         ) as followPool:
             with interruption_handler():
                 followPool.write("{} ~ {} ~ {},\n".format(logtime, followed, user_id))

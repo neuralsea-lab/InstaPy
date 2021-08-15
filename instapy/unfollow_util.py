@@ -49,12 +49,12 @@ from selenium.common.exceptions import ElementNotVisibleException
 
 
 def set_automated_followed_pool(
-    username,
-    unfollow_after,
-    logger,
-    logfolder,
-    delay_followbackers,
-    pool="followedPool",
+        username,
+        unfollow_after,
+        logger,
+        logfolder,
+        delay_followbackers,
+        pool="followedPool",
 ):
     """Generate a user list based on the InstaPy followed usernames"""
     pool_name = "{0}{1}_{2}.csv".format(logfolder, username, pool)
@@ -148,23 +148,23 @@ def set_automated_followed_pool(
 
 
 def unfollow(
-    browser,
-    username,
-    amount,
-    customList,
-    InstapyFollowed,
-    nonFollowers,
-    allFollowing,
-    style,
-    automatedFollowedPool,
-    relationship_data,
-    dont_include,
-    white_list,
-    sleep_delay,
-    jumps,
-    delay_followbackers,
-    logger,
-    logfolder,
+        browser,
+        username,
+        amount,
+        customList,
+        InstapyFollowed,
+        nonFollowers,
+        allFollowing,
+        style,
+        automatedFollowedPool,
+        relationship_data,
+        dont_include,
+        white_list,
+        sleep_delay,
+        jumps,
+        delay_followbackers,
+        logger,
+        logfolder,
 ):
     """Unfollows the given amount of users"""
 
@@ -177,13 +177,13 @@ def unfollow(
     user_link = "https://www.instagram.com/{}/".format(username)
 
     if (
-        customList is not None
-        and isinstance(customList, (tuple, list))
-        and len(customList) == 3
-        and customList[0] is True
-        and isinstance(customList[1], (list, tuple, set))
-        and len(customList[1]) > 0
-        and customList[2] in ["all", "nonfollowers"]
+            customList is not None
+            and isinstance(customList, (tuple, list))
+            and len(customList) == 3
+            and customList[0] is True
+            and isinstance(customList[1], (list, tuple, set))
+            and len(customList[1]) > 0
+            and customList[2] in ["all", "nonfollowers"]
     ):
         customList_data = customList[1]
         if not isinstance(customList_data, list):
@@ -194,11 +194,11 @@ def unfollow(
         customList = False
 
     if (
-        InstapyFollowed is not None
-        and isinstance(InstapyFollowed, (tuple, list))
-        and len(InstapyFollowed) == 2
-        and InstapyFollowed[0] is True
-        and InstapyFollowed[1] in ["all", "nonfollowers"]
+            InstapyFollowed is not None
+            and isinstance(InstapyFollowed, (tuple, list))
+            and len(InstapyFollowed) == 2
+            and InstapyFollowed[0] is True
+            and InstapyFollowed[1] in ["all", "nonfollowers"]
     ):
         unfollow_track = InstapyFollowed[1]
         InstapyFollowed = True
@@ -229,10 +229,10 @@ def unfollow(
         amount = allfollowing
 
     if (
-        customList is True
-        or InstapyFollowed is True
-        or nonFollowers is True
-        or allFollowing is True
+            customList is True
+            or InstapyFollowed is True
+            or nonFollowers is True
+            or allFollowing is True
     ):
 
         if nonFollowers is True:
@@ -303,8 +303,8 @@ def unfollow(
                 if person not in automatedFollowedPool["all"].keys():
                     not_found.append(person)
                 elif (
-                    person in automatedFollowedPool["all"].keys()
-                    and person not in automatedFollowedPool["eligible"].keys()
+                        person in automatedFollowedPool["all"].keys()
+                        and person not in automatedFollowedPool["eligible"].keys()
                 ):
                     non_eligible.append(person)
 
@@ -444,7 +444,7 @@ def unfollow(
                                             continue
 
                                         if (
-                                            time_diff < delay_followbackers
+                                                time_diff < delay_followbackers
                                         ):  # N days in seconds
                                             set_followback_in_pool(
                                                 username,
@@ -632,21 +632,21 @@ def scroll_to_bottom_of_followers_list(browser):
 
 
 def get_users_through_dialog_with_graphql(
-    browser,
-    login,
-    user_name,
-    amount,
-    users_count,
-    randomize,
-    dont_include,
-    blacklist,
-    follow_times,
-    simulation,
-    channel,
-    jumps,
-    logger,
-    logfolder,
-    edge_followed_by,
+        browser,
+        login,
+        user_name,
+        amount,
+        users_count,
+        randomize,
+        dont_include,
+        blacklist,
+        follow_times,
+        simulation,
+        channel,
+        jumps,
+        logger,
+        logfolder,
+        edge_followed_by,
 ):
 
     # TODO: simulation implmentation
@@ -858,17 +858,17 @@ def dialog_username_extractor(buttons):
 
 
 def follow_through_dialog(
-    browser,
-    login,
-    person_list,
-    buttons,
-    amount,
-    dont_include,
-    blacklist,
-    follow_times,
-    jumps,
-    logger,
-    logfolder,
+        browser,
+        login,
+        person_list,
+        buttons,
+        amount,
+        dont_include,
+        blacklist,
+        follow_times,
+        jumps,
+        logger,
+        logfolder,
 ):
     """Will follow username directly inside a dialog box"""
     if not isinstance(person_list, list):
@@ -894,7 +894,7 @@ def follow_through_dialog(
                 break
 
             if person not in dont_include and not follow_restriction(
-                "read", person, follow_times, logger
+                    "read", person, follow_times, logger
             ):
                 follow_state, msg = follow_user(
                     browser,
@@ -930,18 +930,18 @@ def follow_through_dialog(
 
 
 def get_given_user_followers(
-    browser,
-    login,
-    user_name,
-    amount,
-    dont_include,
-    randomize,
-    blacklist,
-    follow_times,
-    simulation,
-    jumps,
-    logger,
-    logfolder,
+        browser,
+        login,
+        user_name,
+        amount,
+        dont_include,
+        randomize,
+        blacklist,
+        follow_times,
+        simulation,
+        jumps,
+        logger,
+        logfolder,
 ):
     """
     For the given username, follow their followers.
@@ -1022,18 +1022,18 @@ def get_given_user_followers(
 
 
 def get_given_user_following(
-    browser,
-    login,
-    user_name,
-    amount,
-    dont_include,
-    randomize,
-    blacklist,
-    follow_times,
-    simulation,
-    jumps,
-    logger,
-    logfolder,
+        browser,
+        login,
+        user_name,
+        amount,
+        dont_include,
+        randomize,
+        blacklist,
+        follow_times,
+        simulation,
+        jumps,
+        logger,
+        logfolder,
 ):
     """
     For the given username, follow who they follows.
@@ -1285,15 +1285,15 @@ def follow_restriction(operation, username, limit, logger):
 
 
 def unfollow_user(
-    browser,
-    track,
-    username,
-    person,
-    person_id,
-    button,
-    relationship_data,
-    logger,
-    logfolder,
+        browser,
+        track,
+        username,
+        person,
+        person_id,
+        button,
+        relationship_data,
+        logger,
+        logfolder,
 ):
     """Unfollow a user either from the profile or post page or dialog box"""
     # list of available tracks to unfollow in: ["profile", "post dialog]
@@ -1432,7 +1432,7 @@ def confirm_unfollow(browser):
 
 
 def post_unfollow_cleanup(
-    state, username, person, relationship_data, person_id, logger, logfolder
+        state, username, person, relationship_data, person_id, logger, logfolder
 ):
     """Casual local data cleaning after an unfollow"""
     if not isinstance(state, list):
@@ -1492,7 +1492,7 @@ def get_user_id(browser, track, username, logger):
 
 
 def verify_action(
-    browser, action, track, username, person, person_id, logger, logfolder
+        browser, action, track, username, person, person_id, logger, logfolder
 ):
     """Verify if the action has succeeded"""
     # currently supported actions are follow & unfollow
@@ -1594,9 +1594,9 @@ def get_follow_requests(browser, amount, sleep_delay, logger, logfolder):
     view_more_button = None
 
     while (
-        len(list_of_users) < amount
-        and view_more_clicks < 750
-        and view_more_button_exist
+            len(list_of_users) < amount
+            and view_more_clicks < 750
+            and view_more_button_exist
     ):
         sleep(4)
         list_of_users = browser.find_elements_by_xpath(
@@ -1650,7 +1650,7 @@ def set_followback_in_pool(username, person, person_id, logtime, logger, logfold
 
 
 def refresh_follow_time_in_pool(
-    username, person, person_id, extra_secs, logger, logfolder
+        username, person, person_id, extra_secs, logger, logfolder
 ):
     # set the new time to now plus extra delay
     logtime = (datetime.now() + timedelta(seconds=extra_secs)).strftime(
