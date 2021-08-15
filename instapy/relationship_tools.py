@@ -21,16 +21,16 @@ from selenium.common.exceptions import NoSuchElementException, WebDriverExceptio
 
 
 def get_followers(
-    browser,
-    self_username,
-    username,
-    grab,
-    relationship_data,
-    live_match,
-    store_locally,
-    logger,
-    logfolder,
-    verified_only=False,
+        browser,
+        self_username,
+        username,
+        grab,
+        relationship_data,
+        live_match,
+        store_locally,
+        logger,
+        logfolder,
+        verified_only=False,
 ):
     """Get entire list of followers using graphql queries."""
 
@@ -80,9 +80,9 @@ def get_followers(
     is_private = is_private_profile(browser, logger, following_status == "Following")
 
     if (
-        is_private is None
-        or (is_private is True and following_status not in ["Following", True])
-        or (following_status == "Blocked")
+            is_private is None
+            or (is_private is True and following_status not in ["Following", True])
+            or (following_status == "Blocked")
     ):
         logger.info(
             "This user is private and we are not following. '{}':'{}'".format(
@@ -109,7 +109,7 @@ def get_followers(
 
     graphql_endpoint = "view-source:https://www.instagram.com/graphql/query/"
     graphql_followers = (
-        graphql_endpoint + "?query_hash=37479f2b8209594dde7facb0d904896a"
+            graphql_endpoint + "?query_hash=37479f2b8209594dde7facb0d904896a"
     )
 
     try:
@@ -291,8 +291,8 @@ def get_followers(
 
     if len(all_followers) > 0:
         if (
-            store_locally is True
-            and relationship_data[username]["all_followers"] != all_followers
+                store_locally is True
+                and relationship_data[username]["all_followers"] != all_followers
         ):
             store_followers_data(username, grab, all_followers, logger, logfolder)
         elif store_locally is True:
@@ -321,15 +321,15 @@ def get_followers(
 
 
 def get_following(
-    browser,
-    self_username,
-    username,
-    grab,
-    relationship_data,
-    live_match,
-    store_locally,
-    logger,
-    logfolder,
+        browser,
+        self_username,
+        username,
+        grab,
+        relationship_data,
+        live_match,
+        store_locally,
+        logger,
+        logfolder,
 ):
     """Get entire list of following using graphql queries."""
 
@@ -373,9 +373,9 @@ def get_following(
 
     is_private = is_private_profile(browser, logger, following_status == "Following")
     if (
-        is_private is None
-        or (is_private is True and following_status not in ["Following", True])
-        or (following_status == "Blocked")
+            is_private is None
+            or (is_private is True and following_status not in ["Following", True])
+            or (following_status == "Blocked")
     ):
         logger.info(
             "This user is private and we are not following. '{}':'{}'".format(
@@ -403,7 +403,7 @@ def get_following(
     graphql_endpoint = "view-source:https://www.instagram.com/graphql/query/"
 
     graphql_following = (
-        graphql_endpoint + "?query_hash=58712303d941c6855d4e888c5f0cd22f"
+            graphql_endpoint + "?query_hash=58712303d941c6855d4e888c5f0cd22f"
     )
 
     try:
@@ -584,8 +584,8 @@ def get_following(
 
     if len(all_following) > 0:
         if (
-            store_locally is True
-            and relationship_data[username]["all_following"] != all_following
+                store_locally is True
+                and relationship_data[username]["all_following"] != all_following
         ):
             store_following_data(username, grab, all_following, logger, logfolder)
         elif store_locally is True:
@@ -614,17 +614,17 @@ def get_following(
 
 
 def get_unfollowers(
-    browser,
-    self_username,
-    username,
-    compare_by,
-    compare_track,
-    relationship_data,
-    live_match,
-    store_locally,
-    print_out,
-    logger,
-    logfolder,
+        browser,
+        self_username,
+        username,
+        compare_by,
+        compare_track,
+        relationship_data,
+        live_match,
+        store_locally,
+        print_out,
+        logger,
+        logfolder,
 ):
     if compare_by not in ["latest", "day", "month", "year", "earliest"]:
         logger.info(
@@ -726,14 +726,14 @@ def get_unfollowers(
 
 
 def get_nonfollowers(
-    browser,
-    self_username,
-    username,
-    relationship_data,
-    live_match,
-    store_locally,
-    logger,
-    logfolder,
+        browser,
+        self_username,
+        username,
+        relationship_data,
+        live_match,
+        store_locally,
+        logger,
+        logfolder,
 ):
     """Finds Nonfollowers of a given user"""
 
@@ -800,14 +800,14 @@ def get_nonfollowers(
 
 
 def get_fans(
-    browser,
-    self_username,
-    username,
-    relationship_data,
-    live_match,
-    store_locally,
-    logger,
-    logfolder,
+        browser,
+        self_username,
+        username,
+        relationship_data,
+        live_match,
+        store_locally,
+        logger,
+        logfolder,
 ):
     """Find Fans of a given user"""
 
@@ -868,14 +868,14 @@ def get_fans(
 
 
 def get_mutual_following(
-    browser,
-    self_username,
-    username,
-    relationship_data,
-    live_match,
-    store_locally,
-    logger,
-    logfolder,
+        browser,
+        self_username,
+        username,
+        relationship_data,
+        live_match,
+        store_locally,
+        logger,
+        logfolder,
 ):
     """Find Mutual Following of a given user"""
 
@@ -1075,7 +1075,7 @@ def store_active_unfollowers(username, active_unfollowers, logger, logfolder):
 
 
 def store_nonfollowers(
-    username, followers_size, following_size, nonfollowers, logger, logfolder
+        username, followers_size, following_size, nonfollowers, logger, logfolder
 ):
     """Store Nonfollowers data in a local storage at generated date"""
     generation_date = datetime.today().strftime("%d-%m-%Y")
@@ -1146,7 +1146,7 @@ def store_fans(username, followers_size, following_size, fans, logger, logfolder
 
 
 def store_mutual_following(
-    username, followers_size, following_size, mutual_following, logger, logfolder
+        username, followers_size, following_size, mutual_following, logger, logfolder
 ):
     """Store Mutual Following data in a local storage at generated date"""
     generation_date = datetime.today().strftime("%d-%m-%Y")

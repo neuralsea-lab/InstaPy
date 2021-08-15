@@ -89,19 +89,19 @@ def comment_image(browser, username, comments, blacklist, logger, logfolder):
             # click on textarea/comment box and enter comment
             (
                 ActionChains(browser)
-                .move_to_element(comment_input[0])
-                .click()
-                .send_keys(comment_to_be_sent)
-                .perform()
+                    .move_to_element(comment_input[0])
+                    .click()
+                    .send_keys(comment_to_be_sent)
+                    .perform()
             )
             # wait, to avoid crash
             sleep(2)
             # post comment / <enter>
             (
                 ActionChains(browser)
-                .move_to_element(comment_input[0])
-                .send_keys(Keys.ENTER)
-                .perform()
+                    .move_to_element(comment_input[0])
+                    .send_keys(Keys.ENTER)
+                    .perform()
             )
 
             update_activity(
@@ -174,10 +174,10 @@ def verify_commenting(browser, maximum, minimum, logger):
 
 
 def verify_mandatory_words(
-    mand_words,
-    comments,
-    browser,
-    logger,
+        mand_words,
+        comments,
+        browser,
+        logger,
 ):
     if len(mand_words) > 0 or isinstance(comments[0], dict):
         try:
@@ -215,10 +215,10 @@ def verify_mandatory_words(
             # The comments definition is a compound definition of conditions and comments
             for compund_comment in comments:
                 if (
-                    "mandatory_words" not in compund_comment
-                    or evaluate_mandatory_words(
-                        text, compund_comment["mandatory_words"]
-                    )
+                        "mandatory_words" not in compund_comment
+                        or evaluate_mandatory_words(
+                    text, compund_comment["mandatory_words"]
+                )
                 ):
                     return True, compund_comment["comments"], "Approval"
             return (
@@ -231,7 +231,7 @@ def verify_mandatory_words(
 
 
 def get_comments_on_post(
-    browser, owner, poster, amount, post_link, ignore_users, randomize, logger
+        browser, owner, poster, amount, post_link, ignore_users, randomize, logger
 ):
     """Fetch comments data on posts"""
     web_address_navigator(browser, post_link)
@@ -279,10 +279,10 @@ def get_comments_on_post(
                 comment = value["node"]["text"]
 
                 if (
-                    commenter
-                    and commenter not in commenters
-                    and commenter not in [owner, poster, ignore_users]
-                    and comment
+                        commenter
+                        and commenter not in commenters
+                        and commenter not in [owner, poster, ignore_users]
+                        and comment
                 ):
                     commenters.append(commenter)
                     comments.append(comment)
@@ -384,20 +384,20 @@ def verify_commented_image(browser, link, owner, logger):
 
 
 def process_comments(
-    comments,
-    clarifai_comments,
-    delimit_commenting,
-    max_comments,
-    min_comments,
-    comments_mandatory_words,
-    owner,
-    user_name,
-    blacklist,
-    browser,
-    link,
-    logger,
-    logfolder,
-    publish=True,
+        comments,
+        clarifai_comments,
+        delimit_commenting,
+        max_comments,
+        min_comments,
+        comments_mandatory_words,
+        owner,
+        user_name,
+        blacklist,
+        browser,
+        link,
+        logger,
+        logfolder,
+        publish=True,
 ):
 
     # comments

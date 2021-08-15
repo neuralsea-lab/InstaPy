@@ -90,7 +90,7 @@ def get_main_element(browser, link_elems, skip_top_posts):
 
 
 def get_links_for_location(
-    browser, location, amount, logger, media=None, skip_top_posts=True
+        browser, location, amount, logger, media=None, skip_top_posts=True
 ):
     """
     Fetches the number of links specified by amount and returns a list of links
@@ -419,15 +419,15 @@ def get_links_for_tag(browser, tag, amount, skip_top_posts, randomize, media, lo
 
 
 def get_links_for_username(
-    browser,
-    username,
-    person,
-    amount,
-    logger,
-    logfolder,
-    randomize=False,
-    media=None,
-    taggedImages=False,
+        browser,
+        username,
+        person,
+        amount,
+        logger,
+        logfolder,
+        randomize=False,
+        media=None,
+        taggedImages=False,
 ):
     """
     Fetches the number of links specified by amount and returns a list of links
@@ -474,9 +474,9 @@ def get_links_for_username(
     is_private = is_private_profile(browser, logger, following_status == "Following")
 
     if (
-        is_private is None
-        or (is_private is True and following_status not in ["Following", True])
-        or (following_status == "Blocked")
+            is_private is None
+            or (is_private is True and following_status not in ["Following", True])
+            or (following_status == "Blocked")
     ):
         logger.info(
             "This user is private and we are not following. '{}':'{}'".format(
@@ -541,16 +541,16 @@ def get_media_edge_comment_string(media):
 
 
 def check_link(
-    browser,
-    post_link,
-    dont_like,
-    mandatory_words,
-    mandatory_language,
-    mandatory_character,
-    is_mandatory_character,
-    check_character_set,
-    ignore_if_contains,
-    logger,
+        browser,
+        post_link,
+        dont_like,
+        mandatory_words,
+        mandatory_language,
+        mandatory_character,
+        is_mandatory_character,
+        check_character_set,
+        ignore_if_contains,
+        logger,
 ):
     """
     Check the given link if it is appropriate
@@ -705,8 +705,8 @@ def check_link(
         if quash:
             quashed = (
                 (((quash.group(0)).split("#")[1]).split(" ")[0])
-                .split("\n")[0]
-                .encode("utf-8")
+                    .split("\n")[0]
+                    .encode("utf-8")
             )  # dismiss possible space and newlines
             iffy = (
                 (re.split(r"\W+", dont_likes_regex))[3]
@@ -864,7 +864,7 @@ def get_links(browser, page, logger, media, element):
                         post_category = element.find_element_by_xpath(
                             "//a[@href='/p/"
                             + post_href.split("/")[-2]
-                            + "/']/child::div[@class='u7YqG']/child::span"
+                            + "/']/child::div[@class='u7YqG']/child::div/*[name()='svg']"
                         ).get_attribute("aria-label")
 
                         if post_category in media:

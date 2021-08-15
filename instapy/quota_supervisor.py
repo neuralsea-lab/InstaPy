@@ -60,11 +60,11 @@ def controller(job):
 
     if supervise:
         if (
-            any(
-                e in [job, job + ("_h" if interval == "hourly" else "_d")]
-                for e in sleep_after
-            )
-            and target != "lc_extra"
+                any(
+                    e in [job, job + ("_h" if interval == "hourly" else "_d")]
+                    for e in sleep_after
+                )
+                and target != "lc_extra"
         ):
             nap = remaining_time(sleepyhead, interval)
             send_message(job, "sleep", interval, nap)
@@ -284,7 +284,7 @@ def toast_notification(notify, alert, job, interval):
             "Yawn! {} filled {} quotient!\t~falling asleep a little bit :>"
             if alert == "sleep"
             else "Yikes! {} just woke up from {} quotient bandage!\t~let's "
-            "chill again wakey ;)"
+                 "chill again wakey ;)"
             if alert == "wakeup"
             else "D'oh! {} finished {} quotient!\t~exiting ~,~"
         )
@@ -297,7 +297,7 @@ def toast_notification(notify, alert, job, interval):
                 app_icon=icons[alert],
                 timeout=delay,
                 ticker="To switch supervising methods, please review "
-                "quickstart script",
+                       "quickstart script",
             )
 
         except Exception:
