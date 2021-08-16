@@ -125,9 +125,9 @@ with smart_run(session):
     'turkey', 'beach', 'holiday', 'actors', 'loveyourself', 'bozdağfilm', 'oyuncu', 'actor', 
     'movies', 'shooting', 'elsaanna', 'loveacting', 'mandirmanjolaleddin', 'peyveste', 
     'elzaamani', 'bozdağ', 'bozdağfilm', 'millytv', 'ozbekistan', 'la', 'actor', 'actresslife', 
-    'actress', 'loveacting', 'elzaamani’]
+    'actress', 'loveacting'] #TODO include hero hashtags
     random.shuffle(hashtags)
-    my_hashtags = hashtags[:10]
+    my_hashtags = hashtags[:10] # TODO randomise slicing
 
     # general settings
     session.set_dont_like(['sad', 'rain', 'depression'])
